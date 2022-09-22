@@ -21,15 +21,15 @@ app.addEventListener("click", function(event){
 
 
 async function open_terminal(){
-  createText("Welcome");
+  createText("Welcome to my portfolio machine! ");
   await delay(700);
-  createText("Starting the server...");
+  createText("Ley me introduce myself... 😇");
   await delay(1500);
-  createText("You can run several commands:");
+  createText("What do you want to know?");
  
-  createCode("about me", "Who am i and what do i do.");
-  createCode("all", "See all commands.");
+  createCode("about", "Who am i and what do i do.");
   createCode("social -a", "All my social networks.");
+  createCode("all", "See all commands.");
 
   await delay(500);
   new_line();
