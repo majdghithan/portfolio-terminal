@@ -23,13 +23,15 @@ app.addEventListener("click", function(event){
 async function open_terminal(){
   createText("Welcome to my portfolio machine! ");
   await delay(700);
-  createText("Ley me introduce myself... 😇");
+  createText("Ley me introduce myself... 😇");  
+
   await delay(1500);
-  createText("What do you want to know?");
- 
-  createCode("about", "Who am i and what do i do.");
-  createCode("social -a", "All my social networks.");
-  createCode("all", "See all commands.");
+  createText("My name is Majd and I am a Software Engineer Specialized in Web Development 🙂");
+  createText("What else would you like to know?");
+  createCode("about", "Who is Majd");
+  createCode("projects", "Show my projects.");
+  createCode("social", "Social Media Links.");
+  createCode("all", "Show all commands");
 
   await delay(500);
   new_line();
@@ -42,9 +44,9 @@ function new_line(){
   const span1 = document.createElement("span");
   const span2 = document.createElement("span");
   p.setAttribute("class", "path")
-  p.textContent = "# user";
-  span1.textContent = " in";
-  span2.textContent = " ~/heber-leonard";
+  p.textContent = "#guest";
+  span1.textContent = " on";
+  span2.textContent = " ~/majd.codes";
   p.appendChild(span1);
   p.appendChild(span2);
   app.appendChild(p);
@@ -57,7 +59,6 @@ function new_line(){
   div.appendChild(input);
   app.appendChild(div);
   input.focus();
-  
 }
 
 function removeInput(){
@@ -68,39 +69,59 @@ function removeInput(){
 async function getInputValue(){
   
   const value = document.querySelector("input").value;
-  if(value === "all"){
+  if(value === "all" || value === "All"){
     trueValue(value);
     
     createCode("projects", "My github page with my projects. Follow me there ;)");
-    createCode("about me", "Who am i and what do i do.");
-    createCode("social -a", "All my social networks.");
+    createCode("about", "Who am i and what do i do.");
+    createCode("social", "All my social networks.");
     createCode("clear", "Clean the terminal.");
     
   }
-  else if(value === "projects"){
-    trueValue(value);
-    createText("<a href='https://github.com/heberleonard2' target='_blank'><i class='fab fa-github white'></i> github.com/heberleonard2</a>")
+  else if(value === "projects" || value === "Projects"){ 
+    trueValue(value); 
+    createText("<li><a href='https://emuers.netlify.app/' target='_blank'> 🚨 Emergency Reporting System</a></li>")
+    createText("<p>Emergency Reporting System is a centralized system (Progressive web application) for emergencies where users can report their emergency from any device. The app will report this emergency to several government departments. For example, an accident report is sent to the police, hospital, and fire departments. </p>")
+
+    createText("<li><a href='https://coachmajdd.com/' target='_blank'> 😎 Coach Majd</a></li>")
+    createText("<p>Coach Majd is an online fitness coach, providing meal plans, workout programs and supplements guides using E-commerce website.</p>")
+
+    createText("<li><a href='https://elegants.me/' target='_blank'> 🏚  Elegants Engineering Office</a></li>")
+    createText("<p>Elegants Engineering Office provide architectural services including project management, urban design and interior design for houses, villas and many more.</p>")
+
   }
-  else if(value === "about me"){
+  else if(value === "about" || value === "About"){  
     trueValue(value);
-    createText("Oi, meu nome é Héber ;)")
-    createText("Desenvolvedor atualmente focado em todo o ecossistema Javascript. Utilizando principalmente a stack <span class='blue'>Node, React e React Native </span>por permitir criar aplicações de forma descomplicada e produtiva.")
+    createText("Hello, I am Majd 🥳") 
+    createText("I love building web applications.")
+    createText(`<li>Creative Computer Engineer specialized in Web Development with 2+ years of experience.</li>
+    <li>Experienced in building web applications using MVC framework.
+    <li>Proficiency in web application deployment and linux-based server administration.
+    <li>Comfortable with Git, Github and Bash scripting.
+    <li>Prefer to work with Laravel and MySQL.
+    <li>Good knowledge of the creation of graphic design, UI and UX using standard HTML5/CSS3/JavaScript, Bootstrap, Blade templating engine, while incorporating data from back-end databases and services.
+    <li>Experienced in content mangment systems including Wordpress.
+    <li> Basic knowledge in Node JS, React JS, JQuery, Python, C and Java.`)
   }
-  else if(value === "social -a"){
+
+  else if(value === "social" || value === "Social"){
     trueValue(value);
-    createText("<a href='https://github.com/heberleonard2' target='_blank'><i class='fab fa-github white'></i> github.com/heberleonard2</a>")
-    createText("<a href='https://www.linkedin.com/in/heber-leonard/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/heber-leonard</a>")
-    createText("<a href='https://www.instagram.com/heber_leonard/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/heber_leonard</a>")
-  }
-  else if(value === "social"){
-    trueValue(value);
-    createText("Didn't you mean: social -a?")
+    createText("<a href='mailto:majd.ghithan20@gmail.com' target='_blank'><i class='fas fa-envelope-square'></i> majd.ghithan20@gmail.com</a>")
+    createText("<a href='https://github.com/majdghithan' target='_blank'><i class='fab fa-github white'></i> github.com/majdghithan</a>")
+    createText("<a href='https://www.linkedin.com/in/majdghithan/' target='_blank'><i class='fab fa-linkedin-in white'></i> linkedin.com/in/majdghithan</a>")
+    createText("<a href='https://www.instagram.com/coach.majdd/' target='_blank'><i class='fab fa-instagram white'></i> instagram.com/coach.majdd</a>")
+    createText("<a href='https://www.youtube.com/channel/UCA_eyFkZZSbxABkNdPPjdIw' target='_blank'><i class='fab fa-youtube white'></i> Coach Majd</a>")
   }
   
-  else if(value === "clear"){
+  else if(value === "clear" || value === "Clear"){
     document.querySelectorAll("p").forEach(e => e.parentNode.removeChild(e));
     document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
   }
+
+  else if(value === ""){
+    trueValue(value);
+  }
+
   else{
     falseValue(value);
     createText(`command not found: ${value}`)
@@ -138,9 +159,7 @@ function falseValue(value){
 function createText(text, classname){
   const p = document.createElement("p");
   
-  p.innerHTML =
-  text
-  ;
+  p.innerHTML = text;
   app.appendChild(p);
 }
 
