@@ -3,12 +3,12 @@
 
 <head>
     <script src="https://www.wiris.net/demo/editor/editor"></script>
-    <!-- <script type=”text/javascript” src=”http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML”></script> -->
-    <!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
     <script src="https://polyfill.io/v3/polyfill.js?features=es6"></script>
-
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js"></script>
 
+    <link rel="shortcut icon" href="/assets/Majd-Code.svg " type="image/x-icon">
+  <title>Majd Ghithan</title>
+  
     <script>
         var editor;
         window.onload = function () {
@@ -27,9 +27,6 @@
 
             var answer = document.getElementById("answer");
             var answer2 = document.getElementById("answer2");
-
-            // answer2.innerHTML = eqn;
-
 
             var input = document.getElementById("input");
             input.innerHTML = eqn;
@@ -111,10 +108,8 @@
     
     <div id="answer2"></div>
 
+    <!-- <a href="https://majd.codes">Copyright Majd Codes</a> -->
 
-
-
- 
     <div id="frame">
         <textarea id="input" rows="20" cols="10" style="display: none;">
         </textarea>
@@ -130,33 +125,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-<!-- Enter MathML below -->
-
-<!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mi>x</mi> <mo>=</mo>
-          <mrow>
-            <mfrac>
-              <mrow>
-                <mo>&#x2212;</mo>
-                <mi>b</mi>
-                <mo>&#x00B1;</mo>
-                <msqrt>
-                  <msup><mi>b</mi><mn>2</mn></msup>
-                  <mo>&#x2212;</mo>
-                  <mn>4</mn><mi>a</mi><mi>c</mi>
-                </msqrt>
-              </mrow>
-              <mrow> <mn>2</mn><mi>a</mi> </mrow>
-            </mfrac>
-          </mrow>
-          <mtext>.</mtext>
-        </math> -->
