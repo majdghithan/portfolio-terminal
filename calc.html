@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+    <script src="https://www.wiris.net/demo/editor/editor"></script>
+    <!-- <script type=”text/javascript” src=”http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML”></script> -->
+    <!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+    <script src="https://polyfill.io/v3/polyfill.js?features=es6"></script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js"></script>
+
+    <script>
+        var editor;
+        window.onload = function () {
+            editor = com.wiris.jsEditor.JsEditor.newInstance({
+                'language': 'en'
+            });
+            editor.insertInto(document.getElementById('editorContainer'));
+        }
+
+        var btn = document.getElementById("xx");
+
+        function send(event) {
+            event.preventDefault();
+
+            var eqn = editor.getMathML();
+
+            var answer = document.getElementById("answer");
+            var answer2 = document.getElementById("answer2");
+
+            // answer2.innerHTML = eqn;
+
+
+            var input = document.getElementById("input");
+            input.innerHTML = eqn;
+
+            convert();
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function convert() {
+            //
+            //  Get the MathML input string, and clear any previous output
+            //
+            var input = document.getElementById("input").value.trim();
+            output = document.getElementById('output');
+            output.innerHTML = '';
+            //
+            //  Convert the MathMl to an HTML node and append it to the output
+            //
+            output.appendChild(MathJax.mathml2svg(input));
+            //
+            //  Then update the document to include the adjusted CSS for the
+            //    content of the new equation.
+            //
+            MathJax.startup.document.clear();
+            MathJax.startup.document.updateDocument();
+
+        }
+    </script>
+    <style>
+        #frame {
+            max-width: 40em;
+            margin: auto;
+        }
+
+        #input {
+            border: 1px solid grey;
+            margin: 0 0 .25em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #output {
+            font-size: 120%;
+            margin-top: .75em;
+            border: 1px solid grey;
+            padding: .25em;
+            min-height: 2em;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="editorContainer"></div>
+
+    <p style="text-align:center">
+        
+           ٠ ، ١، ٢، ٣، ٤، ٥، ٦، ٧، ٨، ٩
+        <br>
+        <br>
+   
+        <button  id="xx" onclick="send(event)">Submit</button>
+    
+    </p>
+    
+    <div id="answer2"></div>
+
+
+
+
+ 
+    <div id="frame">
+        <textarea id="input" rows="20" cols="10" style="display: none;">
+        </textarea>
+
+        <br />
+        <div class="right">
+            <input type="button" value="Render MathML" id="render" onclick="convert()" style="display: none;"/>
+        </div>
+        <br clear="all" />
+        <div id="output"></div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- Enter MathML below -->
+
+<!-- <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mi>x</mi> <mo>=</mo>
+          <mrow>
+            <mfrac>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mi>b</mi>
+                <mo>&#x00B1;</mo>
+                <msqrt>
+                  <msup><mi>b</mi><mn>2</mn></msup>
+                  <mo>&#x2212;</mo>
+                  <mn>4</mn><mi>a</mi><mi>c</mi>
+                </msqrt>
+              </mrow>
+              <mrow> <mn>2</mn><mi>a</mi> </mrow>
+            </mfrac>
+          </mrow>
+          <mtext>.</mtext>
+        </math> -->
