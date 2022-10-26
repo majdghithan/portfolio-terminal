@@ -7,8 +7,9 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js"></script>
 
     <link rel="shortcut icon" href="/assets/Majd-Code.svg " type="image/x-icon">
-  <title>Majd Ghithan</title>
-  
+    <title>Majd Ghithan</title>
+    <link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet' type='text/css'>
+
     <script>
         var editor;
         window.onload = function () {
@@ -23,7 +24,9 @@
         function send(event) {
             event.preventDefault();
 
+
             var eqn = editor.getMathML();
+            console.log(eqn);
 
             var answer = document.getElementById("answer");
             var answer2 = document.getElementById("answer2");
@@ -33,19 +36,18 @@
 
             convert();
         }
-    </script>
 
 
 
 
+        MathJax.Ajax.config.path["arabic"] = "https://cdn.rawgit.com/Edraak/arabic-mathjax/v1.0/dist";
 
+        MathJax.Hub.Config({
+            extensions: [
+                "[arabic]/arabic.js"
+            ]
+        });
 
-
-
-
-
-
-    <script>
         function convert() {
             //
             //  Get the MathML input string, and clear any previous output
@@ -63,9 +65,10 @@
             //
             MathJax.startup.document.clear();
             MathJax.startup.document.updateDocument();
-
         }
+
     </script>
+
     <style>
         #frame {
             max-width: 40em;
@@ -97,15 +100,15 @@
     <div id="editorContainer"></div>
 
     <p style="text-align:center">
-        
-           ٠ ، ١، ٢، ٣، ٤، ٥، ٦، ٧، ٨، ٩
+
+        ٠ ، ١، ٢، ٣، ٤، ٥، ٦، ٧، ٨، ٩
         <br>
         <br>
-   
-        <button  id="xx" onclick="send(event)">Submit</button>
-    
+
+        <button id="xx" onclick="send(event)">Submit</button>
+
     </p>
-    
+
     <div id="answer2"></div>
 
     <!-- <a href="https://majd.codes">Copyright Majd Codes</a> -->
@@ -116,7 +119,7 @@
 
         <br />
         <div class="right">
-            <input type="button" value="Render MathML" id="render" onclick="convert()" style="display: none;"/>
+            <input type="button" value="Render MathML" id="render" onclick="convert()" style="display: none;" />
         </div>
         <br clear="all" />
         <div id="output"></div>
